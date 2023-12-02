@@ -33,7 +33,7 @@ app.post('/upload', upload.single("profileImage"), async (req,res)=>{
             fileUrl: req.file.path
            })
     } catch (error) {
-        console.log("some error occured");
+        res.status(500).json({success: false, msg: "Internal Server Error"})
     }
 })
 
