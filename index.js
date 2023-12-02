@@ -33,6 +33,10 @@ app.post('/upload', upload.single("profileImage"), async (req,res)=>{
    })
 })
 
+app.get('/',(req,res)=>{
+    res.send("working")
+})
+
 app.get('/links',async (req,res)=>{
     const links = await Files.find();
     res.send(links);
