@@ -32,14 +32,13 @@ app.use('/uploads', express.static(path.join(__dirname,"uploads")));
  
 
 app.post('/upload', upload.single("profileImage"), async (req,res)=>{
-    console.log(req.file);
     try {
         await Files.create({
             fileUrl: req.file.path
            })
-        res.status(200).josn({success: true, msg: "File Uploaded Successfully"});
+        res.status(200).send({sucess:true, msg: "File Uploaded Successfully"});
     } catch (error) {
-        res.status(500).json({success: false, msg: "Internal Server Error"});
+        res.status(500).send({success: false, msg: "Internal Server Error"})
     }
 })
 
