@@ -37,8 +37,9 @@ app.post('/upload', upload.single("profileImage"), async (req,res)=>{
         await Files.create({
             fileUrl: req.file.path
            })
+        res.status(200).josn({success: true, msg: "File Uploaded Successfully"});
     } catch (error) {
-        res.status(500).json({success: false, msg: "Internal Server Error"})
+        res.status(500).json({success: false, msg: "Internal Server Error"});
     }
 })
 
