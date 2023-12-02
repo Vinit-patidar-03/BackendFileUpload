@@ -28,9 +28,13 @@ app.use('/uploads', express.static(path.join(__dirname,"uploads")));
  
 
 app.post('/upload', upload.single("profileImage"), async (req,res)=>{
-   await Files.create({
-    fileUrl: req.file.path
-   })
+    try {
+        await Files.create({
+            fileUrl: req.file.path
+           })
+    } catch (error) {
+        console.log("some error occured");
+    }
 })
 
 app.get('/',(req,res)=>{
